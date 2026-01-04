@@ -826,6 +826,36 @@ header = "{0}"
 
 ---
 
+### *man*
+
+A channel to search Man pages by command or description and return command
+
+**Requirements:** `man`, `apropos`
+
+**Code:** *man.toml*
+
+```toml
+[metadata]
+name = "man"
+description = "A channel to search Man pages by command or description and return command"
+requirements = [ "man", "apropos",]
+
+[source]
+command = [ "apropos .",]
+display = "{split:-:0..2}"
+output = "{split:-:0|replace:s/\\s\\(\\d+\\)//}"
+
+[preview]
+command = "man '{0}'"
+
+[ui.preview_panel]
+header = "{split:-:0|trim}{split:-:1}"
+
+```
+
+
+---
+
 ### *nu-history*
 
 A channel to select from your nu history
